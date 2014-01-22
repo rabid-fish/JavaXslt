@@ -18,17 +18,13 @@
 	</xsl:template>
  
 	<xsl:template match="/root/contact/firstName">
-		<span class="firstName">
-			<xsl:apply-templates />
-		</span>
+		<span class="firstName"><xsl:apply-templates /></span>
 	</xsl:template>
  
 	<xsl:template match="/root/contact/lastName" />
  
 	<xsl:template match="/root/contact/phoneNumber">
-		<span class="phoneNumber">
-			<xsl:apply-templates />
-		</span>
+		<span class="phoneNumber"><xsl:apply-templates /></span>
 	</xsl:template>
  
 </xsl:stylesheet>
