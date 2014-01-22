@@ -5,8 +5,11 @@
 
 	<xsl:template match="/">
 		<html>
+			<head>
+				<title>Contact Update</title>
+			</head>
 			<body>
-				Hello Create
+				Hello Update
 			</body>
 		</html>
 	</xsl:template>
