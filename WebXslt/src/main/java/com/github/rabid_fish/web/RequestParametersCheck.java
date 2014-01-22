@@ -7,9 +7,6 @@ import com.github.rabid_fish.jdbc.JdbcResultSetTranslator.ResultSetRowMapper;
 
 public class RequestParametersCheck {
 
-	public static final String STYLE_SHEET_PATH = "example1/contact-list.xsl";
-	
-	public ServletAction action;
 	public ResultSetRowMapper rowMapper;
 	public String sql;
 	public String styleSheetPath;
@@ -33,7 +30,7 @@ public class RequestParametersCheck {
 			return;
 		}
 
-		setStylesheetPath(exampleString);
+		setStylesheetPath(action, exampleString);
 		setSqlForAction(action);
 		setRowMapperForAction(action);
 	}
@@ -46,6 +43,7 @@ public class RequestParametersCheck {
 
 		switch (action) {
 		case LIST:
+		case UPDATE:
 			rowMapper = new ContactRowMapper();
 			break;
 		default:
@@ -59,15 +57,18 @@ public class RequestParametersCheck {
 		case LIST:
 			sql = "SELECT * FROM contact";
 			break;
+		case UPDATE:
+			sql = "SELECT * FROM contact WHERE firstName = 'John' AND lastName = 'Deer'";
+			break;
 		default:
 			sql = null;
 		}
 	}
 
-	void setStylesheetPath(String example) {
+	void setStylesheetPath(ServletAction action, String example) {
 		
 		if ("1".equals(example)) {
-			styleSheetPath = STYLE_SHEET_PATH;
+			styleSheetPath = "example1/contact-" + action.name().toLowerCase() + ".xsl";
 		} else {
 			styleSheetPath = null;
 		}

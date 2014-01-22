@@ -67,3 +67,18 @@ a.button {
 a.button:hover {
 	text-decoration: underline;
 }
+
+label {
+	display: inline-block;
+	float: left;
+	clear: left;
+	width: 200px;
+	text-align: right;
+}
+
+input {
+	display: inline-block;
+	float: left;
+	margin-left: 10px;
+}
+
