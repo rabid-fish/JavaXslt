@@ -1,4 +1,4 @@
-package com.github.rabid_fish;
+package com.github.rabid_fish.jdbc;
 
 import static org.junit.Assert.assertTrue;
 
@@ -8,9 +8,11 @@ import java.sql.Connection;
 import org.junit.AfterClass;
 import org.junit.Test;
 
+import com.github.rabid_fish.ContactDatabaseSetup;
+import com.github.rabid_fish.ContactRowMapper;
 import com.github.rabid_fish.jdbc.JdbcResultSetTranslator;
 
-public class ContactResultSetTranslatorTest {
+public class JdbcResultSetTranslatorTest {
 
 	private ContactRowMapper mapper = new ContactRowMapper();
 	private JdbcResultSetTranslator jdbcResultSetMapperExample = new JdbcResultSetTranslator();
