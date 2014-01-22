@@ -15,7 +15,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.w3c.dom.Document;
 
-import com.github.rabid_fish.MainServlet;
+import com.github.rabid_fish.web.MainServlet;
 
 public class XsltProcessorTest {
 
