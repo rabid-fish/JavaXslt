@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<root>
+	<contact>
+		<firstName>John</firstName>
+		<lastName>Deer</lastName>
+		<phoneNumber>123456</phoneNumber>
+	</contact>
+	<contact>
+		<firstName>Jane</firstName>
+		<lastName>Doe</lastName>
+		<phoneNumber>654321</phoneNumber>
+	</contact>
+	<contact>
+		<firstName>John</firstName>
+		<lastName>Smith</lastName>
+		<phoneNumber>555555</phoneNumber>
+	</contact>
+</root>

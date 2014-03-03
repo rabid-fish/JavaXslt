@@ -3,14 +3,20 @@ package com.github.rabid_fish.sqltoxml;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.apache.commons.io.IOUtils;
+import org.custommonkey.xmlunit.Diff;
+import org.custommonkey.xmlunit.DifferenceListener;
+import org.custommonkey.xmlunit.IgnoreTextAndAttributeValuesDifferenceListener;
 import org.junit.AfterClass;
 import org.junit.Test;
+import org.xml.sax.SAXException;
 
 public class JdbcResultSetTranslatorExampleTest {
 
@@ -36,14 +42,23 @@ public class JdbcResultSetTranslatorExampleTest {
 	}
 	
 	@Test
-	public void test() {
+	public void testWriteResultsToXml() throws SAXException, IOException {
 
 		String sql = "SELECT firstName, lastName, phoneNumber FROM contact";
 		Connection connection = ContactDatabaseSetup.getConnection();
 		StringWriter writer = new StringWriter();
 		jdbcResultSetMapperExample.writeResultsToXml(connection, writer , mapper, sql);
 		
-		assertTrue(writer.toString().length() > 0);
+		String result = writer.toString();
+		assertTrue("Returned an empty string", result.length() > 0);
+		
+		InputStream xmlSkeletonFile = this.getClass().getResourceAsStream("/results/JdbcResultSetTranslatorResult.xml");
+		String expected = IOUtils.toString(xmlSkeletonFile, "UTF-8");
+		
+		DifferenceListener listener = new IgnoreTextAndAttributeValuesDifferenceListener();
+		Diff diff = new Diff(expected, result);
+		diff.overrideDifferenceListener(listener);
+		assertTrue("Returned xml does not have a skeleton structure that is expected", diff.similar());
 	}
 
 }

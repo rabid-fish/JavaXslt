@@ -1,0 +1,72 @@
+<sql>
+	<metadata>
+		<column-header searchable="true" writable="true" signed="true"
+			nullable="true" definitely-writable="false" case-sensitive="true"
+			table-name="CONTACT" schema-name="PUBLIC" scale="0" precision="32"
+			column-typename="VARCHAR" column-type="12" column-display-size="32"
+			catalogue-name="TEST" column-label="FIRSTNAME" column-name="FIRSTNAME"></column-header>
+		<column-header searchable="true" writable="true" signed="true"
+			nullable="true" definitely-writable="false" case-sensitive="true"
+			table-name="CONTACT" schema-name="PUBLIC" scale="0" precision="32"
+			column-typename="VARCHAR" column-type="12" column-display-size="32"
+			catalogue-name="TEST" column-label="LASTNAME" column-name="LASTNAME"></column-header>
+		<column-header searchable="true" writable="true" signed="true"
+			nullable="true" definitely-writable="false" case-sensitive="true"
+			table-name="CONTACT" schema-name="PUBLIC" scale="0" precision="10"
+			column-typename="INTEGER" column-type="4" column-display-size="11"
+			catalogue-name="TEST" column-label="PHONENUMBER" column-name="PHONENUMBER"></column-header>
+	</metadata>
+	<row-set>
+		<row>
+			<col searchable="true" writable="true" signed="true" nullable="true"
+				definitely-writable="false" case-sensitive="true" table-name="CONTACT"
+				schema-name="PUBLIC" scale="0" precision="32" column-typename="VARCHAR"
+				column-type="12" column-display-size="32" catalogue-name="TEST"
+				column-label="FIRSTNAME" column-name="FIRSTNAME">John</col>
+			<col searchable="true" writable="true" signed="true" nullable="true"
+				definitely-writable="false" case-sensitive="true" table-name="CONTACT"
+				schema-name="PUBLIC" scale="0" precision="32" column-typename="VARCHAR"
+				column-type="12" column-display-size="32" catalogue-name="TEST"
+				column-label="LASTNAME" column-name="LASTNAME">Deer</col>
+			<col searchable="true" writable="true" signed="true" nullable="true"
+				definitely-writable="false" case-sensitive="true" table-name="CONTACT"
+				schema-name="PUBLIC" scale="0" precision="10" column-typename="INTEGER"
+				column-type="4" column-display-size="11" catalogue-name="TEST"
+				column-label="PHONENUMBER" column-name="PHONENUMBER">123456</col>
+		</row>
+		<row>
+			<col searchable="true" writable="true" signed="true" nullable="true"
+				definitely-writable="false" case-sensitive="true" table-name="CONTACT"
+				schema-name="PUBLIC" scale="0" precision="32" column-typename="VARCHAR"
+				column-type="12" column-display-size="32" catalogue-name="TEST"
+				column-label="FIRSTNAME" column-name="FIRSTNAME">Jane</col>
+			<col searchable="true" writable="true" signed="true" nullable="true"
+				definitely-writable="false" case-sensitive="true" table-name="CONTACT"
+				schema-name="PUBLIC" scale="0" precision="32" column-typename="VARCHAR"
+				column-type="12" column-display-size="32" catalogue-name="TEST"
+				column-label="LASTNAME" column-name="LASTNAME">Doe</col>
+			<col searchable="true" writable="true" signed="true" nullable="true"
+				definitely-writable="false" case-sensitive="true" table-name="CONTACT"
+				schema-name="PUBLIC" scale="0" precision="10" column-typename="INTEGER"
+				column-type="4" column-display-size="11" catalogue-name="TEST"
+				column-label="PHONENUMBER" column-name="PHONENUMBER">654321</col>
+		</row>
+		<row>
+			<col searchable="true" writable="true" signed="true" nullable="true"
+				definitely-writable="false" case-sensitive="true" table-name="CONTACT"
+				schema-name="PUBLIC" scale="0" precision="32" column-typename="VARCHAR"
+				column-type="12" column-display-size="32" catalogue-name="TEST"
+				column-label="FIRSTNAME" column-name="FIRSTNAME">John</col>
+			<col searchable="true" writable="true" signed="true" nullable="true"
+				definitely-writable="false" case-sensitive="true" table-name="CONTACT"
+				schema-name="PUBLIC" scale="0" precision="32" column-typename="VARCHAR"
+				column-type="12" column-display-size="32" catalogue-name="TEST"
+				column-label="LASTNAME" column-name="LASTNAME">Smith</col>
+			<col searchable="true" writable="true" signed="true" nullable="true"
+				definitely-writable="false" case-sensitive="true" table-name="CONTACT"
+				schema-name="PUBLIC" scale="0" precision="10" column-typename="INTEGER"
+				column-type="4" column-display-size="11" catalogue-name="TEST"
+				column-label="PHONENUMBER" column-name="PHONENUMBER">555555</col>
+		</row>
+	</row-set>
+</sql>
