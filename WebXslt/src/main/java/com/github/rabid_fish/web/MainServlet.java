@@ -18,7 +18,7 @@ import com.github.rabid_fish.xslt.XsltProcessor;
 public class MainServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	public static final String STYLE_SHEET_PATH = "example1/contact-list.xsl";
+	public static final String STYLE_SHEET_PATH = "view/contact-list.xsl";
 
 	private XsltProcessor xslt = new XsltProcessor();
 	private JdbcResultSetTranslator translator = new JdbcResultSetTranslator();
@@ -46,7 +46,7 @@ public class MainServlet extends HttpServlet {
 		doSendResponse(response, check.styleSheetPath, check.sql, check.rowMapper);
 	}
 
-	private void doSendResponse(HttpServletResponse response, String styleSheetPath, String sql, ResultSetRowMapper rowMapper) {
+	private <T> void doSendResponse(HttpServletResponse response, String styleSheetPath, String sql, ResultSetRowMapper<T> rowMapper) {
 		
 		try {
 			response.setContentType("text/html");
@@ -61,7 +61,7 @@ public class MainServlet extends HttpServlet {
 		}
 	}
 
-	private StringWriter getDataFromDatabaseInXmlFormat(ResultSetRowMapper rowMapper, String sql) {
+	private <T> StringWriter getDataFromDatabaseInXmlFormat(ResultSetRowMapper<T> rowMapper, String sql) {
 
 		StringWriter xmlSourceWriter = new StringWriter();
 		Connection connection = ContactDatabaseSetup.getConnection();

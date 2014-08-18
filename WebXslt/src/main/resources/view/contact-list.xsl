@@ -21,7 +21,7 @@
 								<th>Phone Number</th>
 								<th>Action</th>
 							</tr>
-							<xsl:apply-templates />
+							<xsl:apply-templates select="/list/contact" />
 						</table>
 					</div>
 				</div>
@@ -29,32 +29,32 @@
 		</html>
 	</xsl:template>
 
-	<xsl:template match="/root/contact">
-		<xsl:variable name="css-class">
+	<xsl:template match="/list/contact">
+		<xsl:variable name="contactId" select="id" />
+		<xsl:variable name="cssClass">
 			<xsl:choose>
 				<xsl:when test="position() mod 2 = 0">even</xsl:when>
 				<xsl:otherwise>odd</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
 		
-		<tr class="{$css-class}">
-			<xsl:apply-templates />
+		<tr class="{$cssClass}">
+			<xsl:apply-templates select="firstName" />
+			<xsl:apply-templates select="phoneNumber" />
 			<td>
 				<div class="buttons">
-					<a class="button" href="MainServlet?example=1&amp;action=update">update</a>
-					<a class="button" href="MainServlet?example=1&amp;action=delete">delete</a>
+					<a class="button" href="MainServlet?example=1&amp;action=update&amp;id={$contactId}">update</a>
+					<a class="button" href="MainServlet?example=1&amp;action=delete&amp;id={$contactId}">delete</a>
 				</div>
 			</td>
 		</tr>
 	</xsl:template>
  
-	<xsl:template match="/root/contact/firstName">
+	<xsl:template match="/list/contact/firstName">
 		<td class="firstName"><xsl:apply-templates /></td>
 	</xsl:template>
  
-	<xsl:template match="/root/contact/lastName" />
- 
-	<xsl:template match="/root/contact/phoneNumber">
+	<xsl:template match="/list/contact/phoneNumber">
 		<td class="phoneNumber"><xsl:apply-templates /></td>
 	</xsl:template>
  

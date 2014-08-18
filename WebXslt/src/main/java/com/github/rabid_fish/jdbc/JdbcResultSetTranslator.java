@@ -1,42 +1,55 @@
 package com.github.rabid_fish.jdbc;
 
 import java.io.IOException;
+import java.io.StringWriter;
 import java.io.Writer;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.PropertyException;
+
+import com.github.rabid_fish.jaxb.JaxbListWrapper;
+import com.github.rabid_fish.jaxb.JaxbUtil;
 
 public class JdbcResultSetTranslator {
 
-	public interface ResultSetRowMapper {
-		public void map(ResultSet resultSet, Writer writer) throws IOException, SQLException;
+	public interface ResultSetRowMapper<T> {
+		public T map(ResultSet resultSet) throws SQLException;
 	}
 	
-	public void writeResultsToXml(Connection connection, Writer writer, ResultSetRowMapper rowMapper, String sql) {
+	public <T> void writeResultsToXml(Connection connection, Writer writer, ResultSetRowMapper<T> rowMapper, String sql) {
 		
 		try {
-			writeResultsToXmlThrowsIOException(connection, writer, rowMapper, sql);
-		} catch (IOException e) {
+			List<T> listOfElements = getListOfElementsViaJdbc(connection, rowMapper, sql);
+			writeListToOutput(listOfElements, writer);
+			
+		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}
 	
-	private void writeResultsToXmlThrowsIOException(Connection connection, Writer writer, ResultSetRowMapper rowMapper, String sql) throws IOException {
+	private <T> List<T> getListOfElementsViaJdbc(Connection connection, ResultSetRowMapper<T> rowMapper, String sql) throws IOException {
+		
+		List<T> list = new ArrayList<T>();
 		
 		Exception exception = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
 		
-		writer.write("<?xml version=\"1.0\"?>\n");
-		writer.write("<root>\n");
 		
 		try {
 			statement = connection.createStatement();
 			resultSet = statement.executeQuery(sql);
 			
 			while (resultSet.next()) {
-				rowMapper.map(resultSet, writer);
+				T element = rowMapper.map(resultSet);
+				list.add(element);
 			}
 			
 		} catch (SQLException sqle) {
@@ -68,7 +81,18 @@ public class JdbcResultSetTranslator {
 			throw new RuntimeException(exception);
 		}
 		
-		writer.write("</root>\n");
+		return list;
 	}
 
+	private <T> void writeListToOutput(List<T> listOfElements, Writer writer) throws IOException, PropertyException, JAXBException {
+		
+		JaxbListWrapper listWrapper = new JaxbListWrapper(listOfElements);
+		Marshaller marshaller = JaxbUtil.createMarshaller();
+		
+		StringWriter stringWriter = new StringWriter();
+		marshaller.marshal(listWrapper, stringWriter);
+		System.out.println(stringWriter.toString());
+
+		marshaller.marshal(listWrapper, writer);
+	}
 }

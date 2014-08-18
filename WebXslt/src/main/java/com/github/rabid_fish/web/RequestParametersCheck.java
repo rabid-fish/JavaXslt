@@ -2,12 +2,13 @@ package com.github.rabid_fish.web;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.github.rabid_fish.Contact;
 import com.github.rabid_fish.ContactRowMapper;
 import com.github.rabid_fish.jdbc.JdbcResultSetTranslator.ResultSetRowMapper;
 
 public class RequestParametersCheck {
 
-	public ResultSetRowMapper rowMapper;
+	public ResultSetRowMapper<Contact> rowMapper;
 	public String sql;
 	public String styleSheetPath;
 	
@@ -68,7 +69,7 @@ public class RequestParametersCheck {
 	void setStylesheetPath(ServletAction action, String example) {
 		
 		if ("1".equals(example)) {
-			styleSheetPath = "example1/contact-" + action.name().toLowerCase() + ".xsl";
+			styleSheetPath = "view/contact-" + action.name().toLowerCase() + ".xsl";
 		} else {
 			styleSheetPath = null;
 		}

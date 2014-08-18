@@ -1,8 +1,9 @@
-<?xml version="1.0"?>
-<root>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<list>
 	<contact>
+		<id>1</id>
 		<firstName>Dan</firstName>
 		<lastName>Juliano</lastName>
 		<phoneNumber>5155551212</phoneNumber>
 	</contact>
-</root>
+</list>

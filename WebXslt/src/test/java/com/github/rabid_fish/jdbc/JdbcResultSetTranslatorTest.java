@@ -25,10 +25,10 @@ public class JdbcResultSetTranslatorTest {
 	@Test
 	public void testWriteResultsToXml() {
 
-		String sql = "SELECT firstName, lastName, phoneNumber FROM contact";
+		String sql = "SELECT id, firstName, lastName, phoneNumber FROM contact";
 		Connection connection = ContactDatabaseSetup.getConnection();
 		StringWriter writer = new StringWriter();
-		jdbcResultSetMapperExample.writeResultsToXml(connection, writer , mapper, sql);
+		jdbcResultSetMapperExample.writeResultsToXml(connection, writer, mapper, sql);
 		
 		assertTrue(writer.toString().length() > 0);
 	}

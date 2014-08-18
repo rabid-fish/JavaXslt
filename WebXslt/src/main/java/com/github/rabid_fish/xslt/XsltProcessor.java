@@ -106,9 +106,10 @@ public class XsltProcessor {
 		try {
 			DocumentBuilderFactory dataDocumentBuilderFactory = DocumentBuilderFactory.newInstance();
 			dataDocumentBuilderFactory.setNamespaceAware(true);
-			dataDocumentBuilderFactory.setValidating(true);
+			dataDocumentBuilderFactory.setValidating(false);
 
 			DocumentBuilder dataDocumentBuilder = dataDocumentBuilderFactory.newDocumentBuilder();
+			dataDocumentBuilder.setErrorHandler(new SimpleErrorHandler());
 			dataDocument = dataDocumentBuilder.parse(xmlInputStream);
 
 		} catch (Exception e) {

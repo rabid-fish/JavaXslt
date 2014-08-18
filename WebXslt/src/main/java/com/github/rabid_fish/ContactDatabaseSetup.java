@@ -57,7 +57,7 @@ public class ContactDatabaseSetup {
 	public void prepDatabaseForTest() {
 
 		try {
-			helper.executeStatement(connection, "CREATE TABLE contact ( firstName VARCHAR(32), lastName VARCHAR(32), phoneNumber int)");
+			helper.executeStatement(connection, "CREATE TABLE contact (id int auto_increment, firstName VARCHAR(32), lastName VARCHAR(32), phoneNumber int)");
 		} catch (RuntimeException re) {
 			System.out.println("Table 'contact' has already been created");
 		}
